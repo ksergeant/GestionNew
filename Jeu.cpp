@@ -11,10 +11,21 @@
 Jeu::Jeu(){
     
     cout << "\n### Création du jeu ###"<<endl;
+    this->etatDuJeu = false;
 }
 
 Jeu::~Jeu(){
     
+}
+
+void Jeu::Lancement(){
+    etatDuJeu = true;
+    
+}
+
+void Jeu::Stop(){
+    
+    etatDuJeu = false;
 }
 
 void Jeu::ajoutPartie(){
@@ -168,5 +179,11 @@ void Jeu::chargerPartie(){
 
 }
 
+void Jeu::purge(){
+    system("clear");
+}
 
-
+bool Jeu::getEtat(){
+    
+    return etatDuJeu;
+}

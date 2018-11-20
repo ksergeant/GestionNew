@@ -16,6 +16,8 @@ void purge(){
     system("clear");
 }
 
+
+
 int main(int argc, const char * argv[]) {
 
  cout << "Gestion New 1.0 by MOKS\n";

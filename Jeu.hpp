@@ -35,11 +35,15 @@ class Jeu{
         void sauvegardePartie();
         void chargerPartie();
         DonneesSave getSave(int i);
+        void purge();
+        bool getEtat();
+        void Lancement();
+        void Stop();
     
     
     
     private:
-        
+        bool etatDuJeu;
         vector <shared_ptr<Partie>> lesParties;
         string const nomFichier="/Users/Kevin/Desktop/Programmation/C++/GestionNew/GestionNew/sauvegarde";
         
