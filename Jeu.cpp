@@ -10,12 +10,17 @@
 
 Jeu::Jeu(){
     
-    cout << "\n### Création du jeu ###"<<endl;
+    cout << "\n### Création du jeu ###"<<endl<<endl;
     this->etatDuJeu = false;
 }
 
 Jeu::~Jeu(){
     
+}
+
+void Jeu::purge(){
+    usleep(2000000);
+    system("clear");
 }
 
 void Jeu::Lancement(){
@@ -49,7 +54,24 @@ void Jeu::ajoutPartie(DonneesSave data){
     lesParties.push_back(ptr);
 }
 
+void Jeu::afficherPartie(){
+    cout << "\n### Affichage des parties ###"<<endl;
+    if(lesParties.size()==0){
+        cout << "->Aucune Partie";
+    }
+    else{
+        for(int i = 0; i<lesParties.size();i++){
+            cout << "Partie nom : " << lesParties[i]->getName()<<" id : " << lesParties[i]->getNum()<<endl;
+            cout << "Héros " ;
+            lesParties[i]->getPerso() ;
+        }
+    }
+    
+}
+
+
 void Jeu::supprimerPartie(){
+    afficherPartie();
     int num,num2 = 0;
     bool find = false;
     cout << "\nSuppression de la partie ? id : ";
@@ -76,20 +98,7 @@ void Jeu::supprimerPartie(){
    
 }
 
-void Jeu::afficherPartie(){
-    cout << "\n### Affichage des parties ###"<<endl;
-    if(lesParties.size()==0){
-        cout << "->Aucune Partie";
-    }
-    else{
-        for(int i = 0; i<lesParties.size();i++){
-            cout << "Partie nom : " << lesParties[i]->getName()<<" id : " << lesParties[i]->getNum()<<endl;
-            cout << "Héros " ;
-            lesParties[i]->getPerso() ;
-        }
-    }
-    
-}
+
 
 DonneesSave Jeu::getSave( int i){
     
@@ -162,10 +171,7 @@ void Jeu::chargerPartie(){
             cout << "Le fichier contient " << nbLignes << "lignes";
             /*
             for(int i = 0; i<lesParties.size();i++){
-                
-               
              
-                
             }
             */
             monFlux.close();
@@ -179,11 +185,64 @@ void Jeu::chargerPartie(){
 
 }
 
-void Jeu::purge(){
-    system("clear");
-}
+
 
 bool Jeu::getEtat(){
     
     return etatDuJeu;
+}
+
+
+void Jeu::afficheMenu(){
+    cout << "\n#### Menu Principal du Jeu ####" <<endl <<endl;
+    cout << "1: Afficher les parties " <<endl;
+    cout << "2: Nouvelle partie " <<endl;
+    cout << "3: Charger une partie" <<endl;
+    cout << "4: Sauvegarder une partie" <<endl;
+    cout << "5: Supprimer une partie" <<endl;
+    cout << "6: Quitter le jeu" <<endl<<endl;
+    
+    cout << "Votre choix -> ";
+
+}
+
+void Jeu::GameLoop(){
+    
+    Lancement();
+    int choix;
+    
+    while(etatDuJeu == true){
+        purge();
+        afficheMenu();
+        
+        cin >> choix;
+        
+        switch (choix) {
+            case 1:
+                afficherPartie();
+                break;
+            case 2:
+                ajoutPartie();
+                break;
+            case 3:
+                chargerPartie();
+                break;
+            case 4:
+                sauvegardePartie();
+                break;
+            case 5:
+                supprimerPartie();
+                break;
+            case 6:
+                Stop();
+                break;
+                
+            default:
+                cout << "Erreur "<<endl;
+                break;
+        }
+        
+        
+    }
+    
 }

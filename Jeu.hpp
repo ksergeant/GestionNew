@@ -18,6 +18,7 @@
 #include <fstream>
 #include <string>
 #include <limits>
+#include <unistd.h>
 
 using namespace std;
 
@@ -30,15 +31,21 @@ class Jeu{
         ~Jeu();
         void ajoutPartie();
         void ajoutPartie(DonneesSave data);
+    
         void supprimerPartie();
         void afficherPartie();
+    
         void sauvegardePartie();
         void chargerPartie();
+    
         DonneesSave getSave(int i);
+    
         void purge();
         bool getEtat();
         void Lancement();
         void Stop();
+        void afficheMenu();
+        void GameLoop();
     
     
     

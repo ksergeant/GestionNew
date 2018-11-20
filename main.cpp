@@ -11,30 +11,25 @@
 
 using namespace std;
 
-
 void purge(){
     system("clear");
 }
-
-
 
 int main(int argc, const char * argv[]) {
 
  cout << "Gestion New 1.0 by MOKS\n";
     
-    
     Jeu monJeu;
-    
-    monJeu.afficherPartie();
-    monJeu.chargerPartie();
-    system("clear");
+    monJeu.GameLoop();
+   // monJeu.afficherPartie();
+    //monJeu.chargerPartie();
     //monJeu.supprimerPartie();
     
    // monJeu.ajoutPartie();
     //monJeu.ajoutPartie();
     //monJeu.ajoutPartie();
 
-    monJeu.afficherPartie();
+   // monJeu.afficherPartie();
     //monJeu.sauvegardePartie();
     //monJeu.supprimerPartie();
     //monJeu.afficherPartie();
